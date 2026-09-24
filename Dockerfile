@@ -90,7 +90,7 @@ ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
     REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt \
     PIP_CERT=/etc/ssl/certs/ca-certificates.crt
 
-RUN apk add --no-cache bash curl git jq openssl gettext
+RUN apk add --no-cache bash curl gettext git jq openssl
 
 COPY --from=awscli-builder /opt/aws-venv /opt/aws-venv
 RUN ln -s /opt/aws-venv/bin/aws /usr/local/bin/aws
