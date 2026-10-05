@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ARG AWSCLI_VERSION=2.36.39
-ARG HELM_VERSION=4.2.3
+ARG HELM_VERSION=4.3.0
 ARG GO_VERSION=1.27
 ARG KUBECTL_VERSION=1.35
 ARG PYTHON_VERSION=3.12
@@ -90,7 +90,7 @@ ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
     REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt \
     PIP_CERT=/etc/ssl/certs/ca-certificates.crt
 
-RUN apk add --no-cache bash curl gettext git jq openssl
+RUN apk add --no-cache bash curl gettext-envsubst git jq openssl
 
 COPY --from=awscli-builder /opt/aws-venv /opt/aws-venv
 RUN ln -s /opt/aws-venv/bin/aws /usr/local/bin/aws
